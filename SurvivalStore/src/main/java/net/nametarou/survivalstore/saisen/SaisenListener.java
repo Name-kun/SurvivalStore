@@ -36,7 +36,7 @@ public class SaisenListener implements @NotNull Listener {
     SurvivalStore plugin = SurvivalStore.getPlugin(SurvivalStore.class);
 
     public static ItemStack getSaisen(double dollar, int amount) {
-        ItemStack item = new ItemStack(Material.DANDELION, amount);
+        ItemStack item = new ItemStack(Material.SUNFLOWER, amount);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName("§e§lお賽銭");
         meta.setLore(Arrays.asList("§a外の世界から現れたお賽銭。", "§a一説によると神の加護があるらしい。", "§5賽銭箱に投げ入れると...？"));
