@@ -53,7 +53,10 @@ public final class SurvivalStore extends JavaPlugin implements CommandExecutor, 
                 sender.sendMessage("§a/store reload§7: プラグイン全体をリロードします");
                 return true;
             } else {
-                if (args[0].equalsIgnoreCase("reload")) createFiles();
+                if (args[0].equalsIgnoreCase("reload")) {
+                    createFiles();
+                    sender.sendMessage("§aリロードが完了しました。");
+                }
                 else {
                     sender.sendMessage("§a/store reload§7: プラグイン全体をリロードします");
                 }
