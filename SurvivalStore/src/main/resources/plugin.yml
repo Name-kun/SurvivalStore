@@ -1,0 +1,19 @@
+name: SurvivalStore
+version: '${project.version}'
+main: net.nametarou.survivalstore.SurvivalStore
+api-version: 1.19
+
+commands:
+  saisen:
+    usage: /saisen
+    description: related to saisen
+    permission: survivalstore.saisen
+  store:
+    usage: /store
+    description: a general command for SurvivalStore
+    permission: survivalstore.admin
+
+permissions:
+  survivalstore.admin:
+    children:
+      survivalstore.saisen: false

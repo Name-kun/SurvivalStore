@@ -1,0 +1,21 @@
+#### Config File for SurvivalStore Plugin ####
+
+
+##############
+### Saisen ###
+##############
+
+#The list of region names where saisen boxes are in Survival Server
+saisenRegions:
+  -
+
+#The amount of dollar will be added to the original number, which will be used for the hologram
+currentDollar: 0.0
+
+#
+holograms:
+  hologram1:
+    X:
+    Y:
+    Z:
+    world:
