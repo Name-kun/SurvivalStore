@@ -64,7 +64,7 @@ public class SaisenListener implements @NotNull Listener {
     }
 
     private void saisenEvent(Player p, Item thrownItem) {
-        if (p.getTargetBlock((Set<Material>) null, 5).getType().equals(Material.CAULDRON)) {
+        if (p.getTargetBlock((Set<Material>) null, 5).getType().equals(Material.JUKEBOX)) {
             double dollar = new NBTItem(thrownItem.getItemStack()).getDouble("Dollar");
             plugin.getConf().set("currentDollar", plugin.getConf().getDouble("currentDollar") + dollar);
             plugin.saveConf();
@@ -86,7 +86,7 @@ public class SaisenListener implements @NotNull Listener {
         task.runTaskTimer(plugin, 0L, 20L);
     }
 
-    private void changeHologram() {
+    public void changeHologram() {
         double dollar = plugin.getConf().getDouble("currentDollar");
         List<String> content = new ArrayList<>();
         content.add("§c§m-§6§m-§e§m-§a§m-§b§m-§3§l お賽銭 §b§m-§a§m-§e§m-§6§m-§c§m-");

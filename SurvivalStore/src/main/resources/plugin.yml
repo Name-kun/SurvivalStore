@@ -2,6 +2,10 @@ name: SurvivalStore
 version: '${project.version}'
 main: net.nametarou.survivalstore.SurvivalStore
 api-version: 1.19
+depend:
+  - DecentHolograms
+  - NBTAPI
+  - WorldGuard
 
 commands:
   saisen:
@@ -13,7 +17,7 @@ commands:
     description: a general command for SurvivalStore
     permission: survivalstore.admin
 
-permissions:
-  survivalstore.admin:
-    children:
-      survivalstore.saisen: false
+#permissions:
+#  survivalstore.admin:
+#    children:
+#      survivalstore.saisen: false

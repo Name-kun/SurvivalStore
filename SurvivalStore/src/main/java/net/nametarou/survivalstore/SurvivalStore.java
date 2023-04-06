@@ -1,5 +1,8 @@
 package net.nametarou.survivalstore;
 
+import eu.decentsoftware.holograms.api.DHAPI;
+import eu.decentsoftware.holograms.api.holograms.Hologram;
+import eu.decentsoftware.holograms.api.utils.scheduler.S;
 import net.nametarou.survivalstore.saisen.SaisenCmd;
 import net.nametarou.survivalstore.saisen.SaisenListener;
 import net.nametarou.survivalstore.saisen.SasienTab;
@@ -19,7 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.nametarou.survivalstore.saisen.SaisenListener.lastModified;
+import static net.nametarou.survivalstore.saisen.SaisenListener.*;
 
 public final class SurvivalStore extends JavaPlugin implements CommandExecutor, TabCompleter {
 
@@ -28,18 +31,19 @@ public final class SurvivalStore extends JavaPlugin implements CommandExecutor, 
 
     @Override
     public void onEnable() {
+        SaisenListener saisenListener = new SaisenListener();
         getCommand("saisen").setExecutor(new SaisenCmd());
-        getServer().getPluginManager().registerEvents(new SaisenListener(), this);
+        getServer().getPluginManager().registerEvents(saisenListener, this);
         getCommand("saisen").setTabCompleter(new SasienTab());
         getCommand("store").setExecutor(this);
         createFiles();
         lastModified = configFile.lastModified();
-        new SaisenListener().hologramUpdater();
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+        saisenListener.hologramUpdater();
+        try {
+            saisenListener.changeHologram();
+        } catch (Exception e) {
+            getLogger().info("§cエラーが発生しました。");
+        }
     }
 
     @Override
@@ -56,8 +60,7 @@ public final class SurvivalStore extends JavaPlugin implements CommandExecutor, 
                 if (args[0].equalsIgnoreCase("reload")) {
                     createFiles();
                     sender.sendMessage("§aリロードが完了しました。");
-                }
-                else {
+                } else {
                     sender.sendMessage("§a/store reload§7: プラグイン全体をリロードします");
                 }
             }
